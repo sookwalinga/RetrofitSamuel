@@ -1,7 +1,5 @@
 package com.samo.retrofitsamuel.network;
 
-import com.samo.retrofitsamuel.viewmodel.PostModel;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 
