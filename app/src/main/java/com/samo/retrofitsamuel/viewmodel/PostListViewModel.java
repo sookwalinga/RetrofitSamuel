@@ -45,7 +45,7 @@ public class PostListViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<List<PostModel>> call, Throwable t) {
+            public void onFailure(Call<List<PostModel>> call, Throwable throwable) {
 //                On failure e.g. HTTP error code 400, return null - nothing will be displayed in the recyclerview.
                 postList.postValue(null);
             }

@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Retrofitinstance {
 
     //    Defining the base url from which the data is fetched.
-    public static String BASE_URL = "https://jsonplaceholder.typicode.com/"
+    public static String BASE_URL = "https://jsonplaceholder.typicode.com/";
 
     //        Defining the Retrofit instance.
     private static Retrofit retrofit;

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    This is populated once the data is successfully fetched.-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
         android:layout_width="match_parent"
@@ -14,5 +15,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+<!--    To be made visible once the data fetch has not been successful. Initially hidded-->
+    <TextView
+        android:id="@+id/noDataView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SORRY, FAILED TO FETCH DATA"
+        android:textColor="#000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
