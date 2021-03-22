@@ -5,15 +5,15 @@ public class PostModel {
     private int userId;
     private int id;
     private String title;
-    private String text;
+    private String body;
 
     //    Constructor for this Class.
-public PostModel(int userId, int id, String title, String text){
+public PostModel(int userId, int id, String title, String body){
 //Setting variables in the constructor.
     this.userId = userId;
     this.id = id;
     this.title = title;
-    this.text = text;
+    this.body = body;
 }
 
     //    Getters and Setters.
@@ -41,11 +41,11 @@ public PostModel(int userId, int id, String title, String text){
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getBody() {
+        return body;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setBody(String body) {
+        this.body = body;
     }
 }
