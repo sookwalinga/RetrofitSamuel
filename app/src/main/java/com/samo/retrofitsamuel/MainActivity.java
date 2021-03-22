@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private PostListAdapter adapter;
     private PostListViewModel viewModel;
 
-    RecyclerView recyclerView;
-    TextView textView;
+    public RecyclerView recyclerView;
+    public TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recview);
         textView = findViewById(R.id.noDataView);
 //        Set the LinearLayoutManager to the recyclerview. I am using the GridLayoutManager in this case.
-        LinearLayoutManager linearLayoutManager = new GridLayoutManager(this, 4);
+        LinearLayoutManager linearLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(linearLayoutManager);
 //        Instantiating the Adapter class.
-        PostListAdapter postListAdapter = new PostListAdapter(this, postModelList);
+        adapter = new PostListAdapter(this, postModelList);
         recyclerView.setAdapter(adapter);
 
         viewModel = ViewModelProviders.of(this).get(PostListViewModel.class);
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(List<PostModel> postModels) {
                 if (postModels != null) {
                     postModelList = postModels;
-                    postListAdapter.setPostList(postModels);
+                    adapter.setPostList(postModels);
 //                    Set visibility for the textView for no data to gone when data is fetched successfully.
                     textView.setVisibility(View.GONE);
 

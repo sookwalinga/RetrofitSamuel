@@ -42,6 +42,7 @@ public class PostListViewModel extends ViewModel {
             public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
 //                Instatiating the postList on success - on HTTP code 200 - 300.
                 postList.postValue(response.body());
+                return;
             }
 
             @Override

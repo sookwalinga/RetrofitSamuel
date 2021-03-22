@@ -1,38 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".adapter.PostListAdapter">
 
     <TextView
         android:id="@+id/idView"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:textColor="#FFF"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
         android:textSize="25dp"/>
 
     <TextView
         android:id="@+id/userIdView"
+        android:layout_below="@+id/idView"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:textColor="#FFF"
-        android:textSize="25dp"/>
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="15dp"/>
 
     <TextView
         android:id="@+id/titleView"
+        android:layout_below="@+id/userIdView"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:textColor="#FFF"
-        android:textSize="25dp"/>
+        android:textColor="#000"
+        android:textSize="15dp"/>
 
     <TextView
         android:id="@+id/bodyView"
+        android:layout_below="@+id/titleView"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:textColor="#FFF"
-        android:textSize="25dp"/>
+        android:textColor="#000"
+        android:textSize="15dp"/>
 
-</FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="#B5A2B8"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible" />
+
+
+</RelativeLayout>

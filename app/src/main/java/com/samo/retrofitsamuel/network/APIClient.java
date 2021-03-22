@@ -15,5 +15,6 @@ public interface APIClient{
 //    Implenting the GET method so as to return the list of posts from the API.
 //Posts are generated from the JSONPlaceholder API where the BASE_URL is declared in the Retrofitinstance class.
     @GET("posts")
+//    Call to encapsulate the request and response made with the GET method.
     Call<List<PostModel>> getPostList();
 }

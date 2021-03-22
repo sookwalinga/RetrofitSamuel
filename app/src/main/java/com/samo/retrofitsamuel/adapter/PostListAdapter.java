@@ -34,23 +34,22 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.MyView
         notifyDataSetChanged();
     }
 
-    //    Implementing functions in our class.
+    // Inflating the recyclerview.    .
     @Nullable
     @Override
     public PostListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        Inflating  the recycler.
-        View view = LayoutInflater.from(context).inflate(R.layout.recycler_row, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.recycler_row, parent, false);
         return new MyViewHolder(view);
-//        return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull PostListAdapter.MyViewHolder holder, int position) {
 //Setting values from the list.
-//        holder.tvId.setText(String.valueOf(this.postList.get(position).getId()));
-//        holder.tvUserId.setText(String.valueOf(this.postList.get(position).getUserId()));
-        holder.tvTitle.setText(this.postList.get(position).getTitle().toString());
-//        holder.tvBody.setText(this.postList.get(position).getText().toString());
+        holder.tvId.setText("Id: " + String.valueOf(this.postList.get(position).getId()));
+        holder.tvUserId.setText("UserId: " +  String.valueOf(this.postList.get(position).getUserId()));
+        holder.tvTitle.setText("Title: " + this.postList.get(position).getTitle().toString());
+        holder.tvBody.setText("Body: " + this.postList.get(position).getText().toString());
     }
 
     @Override
