@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+        <item
+            android:title="@string/home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:id="@+id/fragment_main"
+            />
+        <item
+            android:title="@string/LearnMore"
+            android:icon="@drawable/ic_baseline_local_library_24"
+            android:id="@+id/activity_learn_more"
+            />
+    </group>
+</menu>
