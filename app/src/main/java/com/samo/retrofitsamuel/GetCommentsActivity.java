@@ -1,17 +1,14 @@
 package com.samo.retrofitsamuel;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.samo.retrofitsamuel.adapter.PostListAdapter;
@@ -20,10 +17,7 @@ import com.samo.retrofitsamuel.viewmodel.PostListViewModel;
 
 import java.util.List;
 
-/**
- * create an instance of this fragment.
- */
-public class GetAllPostsFragment extends Fragment {
+public class GetPostsActivity extends AppCompatActivity {
     //Declaring classes and widgets.
     private List<PostModel> postModelList;
     private PostListAdapter adapter;
@@ -33,24 +27,22 @@ public class GetAllPostsFragment extends Fragment {
     public TextView textView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-//   Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_get_all_posts, container, false);
-
-//        Initializing variables.
-        recyclerView = (RecyclerView) view.findViewById(R.id.recview);
-        textView = (TextView) view.findViewById(R.id.noDataView);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_get_posts);
+        //        Initializing variables.
+        recyclerView = findViewById(R.id.recview);
+        textView = findViewById(R.id.noDataView);
         //        Set the LinearLayoutManager to the recyclerview. I am using the GridLayoutManager in this case.
-        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 1);
+        LinearLayoutManager linearLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(linearLayoutManager);
 //        Instantiating the Adapter class.
-        adapter = new PostListAdapter(getContext(), postModelList);
+        adapter = new PostListAdapter(this, postModelList);
         recyclerView.setAdapter(adapter);
 
-        viewModel = ViewModelProviders.of(getActivity()).get(PostListViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(PostListViewModel.class);
 //        listening to the live data.
-        viewModel.getPostListObserver().observe(getActivity(), new Observer<List<PostModel>>() {
+        viewModel.getPostListObserver().observe(this, new Observer<List<PostModel>>() {
             //            Onsuccess, display the data.
             @Override
             public void onChanged(List<PostModel> postModels) {
@@ -67,6 +59,5 @@ public class GetAllPostsFragment extends Fragment {
             }
         });
         viewModel.makeApiCall();
-        return view;
     }
 }
