@@ -18,7 +18,7 @@
         />
 
     <TextView
-        android:id="@+id/helpTitle"
+        android:id="@+id/Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
             <TextView
-                android:id="@+id/testResult"
+                android:id="@+id/textResult"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SORRY, FAILED TO FETCH DATA"
@@ -44,6 +44,5 @@
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:visibility="gone"/>
-        </LinearLayout>
     </ScrollView>
 </LinearLayout>

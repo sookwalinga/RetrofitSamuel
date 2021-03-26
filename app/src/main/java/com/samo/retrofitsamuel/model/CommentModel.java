@@ -2,31 +2,34 @@ package com.samo.retrofitsamuel.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PostModel {
+public class CommentModel {
 
-    private int userId;
+    private int postId;
     private int id;
-    private String title;
+    private String name;
+    private String email;
     // Anotating variable name with a serialized name since the JSON key and variable name differ.
     @SerializedName("body")
     private String text;
 
     //    Constructor for this Class.
-    public PostModel(int userId, int id, String title, String text) {
+    public CommentModel(int postId, int id, String name, String email, String text) {
 //Setting variables in the constructor.
-        this.userId = userId;
+        this.postId = postId;
         this.id = id;
-        this.title = title;
+        this.name = name;
+        this.email = email;
         this.text = text;
     }
 
     //    Getters and Setters.
-    public int getUserId() {
-        return userId;
+
+    public int getPostId() {
+        return postId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
     public int getId() {
@@ -37,12 +40,20 @@ public class PostModel {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getText() {

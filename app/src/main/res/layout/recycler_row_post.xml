@@ -5,7 +5,7 @@
     android:layout_marginRight="10dp"
     android:layout_marginLeft="10dp"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".adapter.GetListAdapter">
+    tools:context=".adapter.PostAdapter">
 
     <TextView
         android:id="@+id/idView"

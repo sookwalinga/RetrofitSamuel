@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF03DAC5"
-    tools:context=".GetPostsActivity">
+    tools:context=".PostsRecyclerActivity">
 
     <!--    This is populated once the data is successfully fetched.-->
     <androidx.recyclerview.widget.RecyclerView

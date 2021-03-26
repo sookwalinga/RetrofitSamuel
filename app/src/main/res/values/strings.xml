@@ -6,10 +6,11 @@
     <string name="post">POST</string>
     <string name="put">PUT</string>
     <string name="delete">DELETE</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="home">Home</string>
     <string name="LearnMore">Learn More</string>
     <string name="developer">Developed By Samuel</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="PostsByQuery">Posts By Query</string>
+
 </resources>

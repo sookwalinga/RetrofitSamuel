@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,16 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.samo.retrofitsamuel.R;
 import com.samo.retrofitsamuel.model.PostModel;
 
-import java.security.PublicKey;
 import java.util.List;
 
 //Implementing the Adapter.
-public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.MyViewHolder> {
+public class GetListAdapter extends RecyclerView.Adapter<GetListAdapter.MyViewHolder> {
 
     private Context context;
     private List<PostModel> postList;
 
-    public PostListAdapter(Context context, List<PostModel> postList) {
+    public GetListAdapter(Context context, List<PostModel> postList) {
         this.context = context;
         this.postList = postList;
     }
@@ -37,14 +35,14 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.MyView
     // Inflating the recyclerview.    .
     @Nullable
     @Override
-    public PostListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GetListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_row, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GetListAdapter.MyViewHolder holder, int position) {
 //Setting values from the list.
         holder.tvId.setText("Id: " + String.valueOf(this.postList.get(position).getId()));
         holder.tvUserId.setText("UserId: " +  String.valueOf(this.postList.get(position).getUserId()));

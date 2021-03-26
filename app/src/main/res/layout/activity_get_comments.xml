@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF03DAC5"
-    tools:context=".GetPostsActivity">
+    android:background="#03DA5D"
+    tools:context=".GetCommentsActivity">
 
     <!--    This is populated once the data is successfully fetched.-->
     <androidx.recyclerview.widget.RecyclerView

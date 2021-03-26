@@ -17,7 +17,7 @@ public class LearnMoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_learn_more);
 
 //        Instantiating variables.
-        webView = (WebView) findViewById(R.id.activity_learn_more);
+        webView = (WebView) findViewById(R.id.learn_more);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("https://square.github.io/retrofit/");
 

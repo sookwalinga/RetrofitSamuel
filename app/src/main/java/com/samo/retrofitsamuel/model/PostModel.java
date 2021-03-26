@@ -11,7 +11,15 @@ public class PostModel {
     @SerializedName("body")
     private String text;
 
-    //    Constructor for this Class.
+//    Constructor for the POST Request.
+// Id is generated automatically by the REST API.
+    public PostModel(int userId, String title, String text) {
+        this.userId = userId;
+        this.title = title;
+        this.text = text;
+    }
+
+    //    Constructor for the GET Requests.
     public PostModel(int userId, int id, String title, String text) {
 //Setting variables in the constructor.
         this.userId = userId;

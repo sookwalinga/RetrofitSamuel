@@ -18,7 +18,7 @@ import retrofit2.Response;
 public class PostListViewModel extends ViewModel {
 
 //    Observer to watch calling of data and updating the recyclerview.
-    private MutableLiveData<List<PostModel>> postList;
+    protected MutableLiveData<List<PostModel>> postList;
 //    Defining a constructor for this class.
     public PostListViewModel(){
 //        Initializing the Observer.
@@ -31,7 +31,7 @@ public class PostListViewModel extends ViewModel {
         return  postList;
     }
 
-//    Instatiating Retrofit in order to make the API Call.
+//   API Call to retrieve data.
     public void makeApiCall(){
         APIClient apiClient = Retrofitinstance.getRetroClient().create(APIClient.class);
         Call<List<PostModel>> call = apiClient.getPostList();
@@ -52,4 +52,30 @@ public class PostListViewModel extends ViewModel {
             }
         });
     }
+
+
+    //   Posting to the server.
+    public void createPost(){
+        APIClient apiClient = Retrofitinstance.getRetroClient().create(APIClient.class);
+
+        PostModel postModel = new PostModel(23, "New Title", "New Text");
+        Call<PostModel> call = apiClient.createPost(postModel);
+
+        //        Executing the request in the background (asynchronously) using the enqueue retrofit method.
+        call.enqueue(new Callback<PostModel>() {
+            @Override
+            public void onResponse(Call<PostModel> call, Response<PostModel> response) {
+//                Instatiating the postList on success - on HTTP code 200 - 300.
+                response.body();
+                return;
+            }
+
+            @Override
+            public void onFailure(Call<PostModel> call, Throwable throwable) {
+//                On failure e.g. HTTP error code 400, return null - nothing will be displayed in the recyclerview.
+                postList.postValue(null);
+            }
+        });
+    }
+
 }

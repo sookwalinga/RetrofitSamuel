@@ -5,73 +5,73 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.samo.retrofitsamuel.R;
-import com.samo.retrofitsamuel.model.PostModel;
+import com.samo.retrofitsamuel.model.CommentModel;
 
-import java.security.PublicKey;
 import java.util.List;
 
 //Implementing the Adapter.
-public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.MyViewHolder> {
+public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.MyViewHolder> {
 
     private Context context;
-    private List<PostModel> postList;
+    private List<CommentModel> commentList;
 
-    public PostListAdapter(Context context, List<PostModel> postList) {
+    public CommentListAdapter(Context context, List<CommentModel> commentList) {
         this.context = context;
-        this.postList = postList;
+        this.commentList = commentList;
     }
 
     //    Settind data explicitly when refreshing the recyclerview.
-    public void setPostList(List<PostModel> postList) {
-        this.postList = postList;
+    public void setCommentList(List<CommentModel> commentList) {
+        this.commentList = commentList;
         notifyDataSetChanged();
     }
 
     // Inflating the recyclerview.    .
     @Nullable
     @Override
-    public PostListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CommentListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.recycler_row, parent, false);
+        View view = inflater.inflate(R.layout.recycler_row_comments, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CommentListAdapter.MyViewHolder holder, int position) {
 //Setting values from the list.
-        holder.tvId.setText("Id: " + String.valueOf(this.postList.get(position).getId()));
-        holder.tvUserId.setText("UserId: " +  String.valueOf(this.postList.get(position).getUserId()));
-        holder.tvTitle.setText("Title: " + this.postList.get(position).getTitle().toString());
-        holder.tvBody.setText("Body: " + this.postList.get(position).getText().toString());
+        holder.tvId.setText("Id: " + String.valueOf(this.commentList.get(position).getId()));
+        holder.tvPostId.setText("PostId: " +  String.valueOf(this.commentList.get(position).getPostId()));
+        holder.tvName.setText("Name: " + this.commentList.get(position).getName().toString());
+        holder.tvEmail.setText("Email: " + this.commentList.get(position).getEmail().toString());
+        holder.tvBody.setText("Body: " + this.commentList.get(position).getText().toString());
     }
 
     @Override
     public int getItemCount() {
 
 //        Returning items being displayed in the recyclerview.
-        if (this.postList != null) {
-            return this.postList.size();
+        if (this.commentList != null) {
+            return this.commentList.size();
         }
         return 0;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         //        Calling views.
-        TextView tvId, tvUserId, tvTitle, tvBody;
+        TextView tvId, tvPostId, tvName, tvEmail, tvBody;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            tvId = (TextView) itemView.findViewById(R.id.idView);
-            tvUserId = (TextView) itemView.findViewById(R.id.userIdView);
-            tvTitle = (TextView) itemView.findViewById(R.id.titleView);
-            tvBody = (TextView) itemView.findViewById(R.id.bodyView);
+            tvId = (TextView) itemView.findViewById(R.id.idComments);
+            tvPostId = (TextView) itemView.findViewById(R.id.postIdComments);
+            tvName = (TextView) itemView.findViewById(R.id.nameComments);
+            tvEmail = (TextView) itemView.findViewById(R.id.emailComments);
+            tvBody = (TextView) itemView.findViewById(R.id.bodyComments);
         }
     }
 }

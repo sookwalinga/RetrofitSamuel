@@ -16,46 +16,46 @@ import com.samo.retrofitsamuel.model.PostModel;
 import java.util.List;
 
 //Implementing the Adapter.
-public class GetListAdapter extends RecyclerView.Adapter<GetListAdapter.MyViewHolder> {
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {
 
     private Context context;
-    private List<PostModel> postList;
+    private PostModel postResponse;
 
-    public GetListAdapter(Context context, List<PostModel> postList) {
+    public PostAdapter(Context context, PostModel postResponse) {
         this.context = context;
-        this.postList = postList;
+        this.postResponse = postResponse;
     }
 
     //    Settind data explicitly when refreshing the recyclerview.
-    public void setPostList(List<PostModel> postList) {
-        this.postList = postList;
+    public void setPostResponse(PostModel postResponse) {
+        this.postResponse = postResponse;
         notifyDataSetChanged();
     }
 
     // Inflating the recyclerview.    .
     @Nullable
     @Override
-    public GetListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PostAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.recycler_row, parent, false);
+        View view = inflater.inflate(R.layout.recycler_row_post, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GetListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PostAdapter.MyViewHolder holder, int position) {
 //Setting values from the list.
-        holder.tvId.setText("Id: " + String.valueOf(this.postList.get(position).getId()));
-        holder.tvUserId.setText("UserId: " +  String.valueOf(this.postList.get(position).getUserId()));
-        holder.tvTitle.setText("Title: " + this.postList.get(position).getTitle().toString());
-        holder.tvBody.setText("Body: " + this.postList.get(position).getText().toString());
+        holder.tvId.setText("Id: " + String.valueOf(this.postResponse.getId()));
+        holder.tvUserId.setText("UserId: " +  String.valueOf(this.postResponse.getUserId()));
+        holder.tvTitle.setText("Title: " + this.postResponse.getTitle().toString());
+        holder.tvBody.setText("Body: " + this.postResponse.getText().toString());
     }
 
     @Override
     public int getItemCount() {
 
 //        Returning items being displayed in the recyclerview.
-        if (this.postList != null) {
-            return this.postList.size();
+        if (this.postResponse != null) {
+            return this.postResponse.getId();
         }
         return 0;
     }
