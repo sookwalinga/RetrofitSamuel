@@ -13,7 +13,7 @@
     </style>
 
     <style name="TextLabel" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">#6B057D</item>
+        <item name="boxStrokeColor">?colorPrimary</item>
         <item name="boxStrokeWidth">2dp</item>
     </style>
 
@@ -21,10 +21,12 @@
         <item name="android:theme">@style/ToolbarTheme</item>
     </style>
 
+<!--    Changing the color of the action bar title. -->
     <style name="ToolbarTheme">
         <!-- Used to for the title of the toolbar -->
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimary">#fff</item>
         <!-- Used to color back button and overflow menu dots -->
-        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColorSecondary">#fff</item>
     </style>
+
 </resources>

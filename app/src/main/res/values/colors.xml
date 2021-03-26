@@ -2,6 +2,6 @@
 <resources>
     <color name="teal_200">#f5a581</color>
     <color name="teal_700">#f1631e</color>
-    <color name="black">#FF000000</color>
+<!--    <color name="black">#FF000000</color>-->
     <color name="white">#FFFFFFFF</color>
 </resources>

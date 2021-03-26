@@ -48,6 +48,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:backgroundTint="#f1631e"
+            android:fontFamily="@font/bubblegum_sans"
             android:text="@string/getAllPosts"
             android:textColor="#fff"
             android:textSize="20sp" />
@@ -59,6 +60,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:backgroundTint="#f1631e"
+            android:fontFamily="@font/bubblegum_sans"
             android:text="@string/getByQuery"
             android:textColor="#fff"
             android:textSize="20sp" />
@@ -70,6 +72,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:backgroundTint="#f1631e"
+            android:fontFamily="@font/bubblegum_sans"
             android:text="@string/post"
             android:textColor="#fff"
             android:textSize="20sp" />
@@ -81,6 +84,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:backgroundTint="#f1631e"
+            android:fontFamily="@font/bubblegum_sans"
             android:text="@string/put"
             android:textColor="#fff"
             android:textSize="20sp" />
@@ -92,6 +96,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:backgroundTint="#f1631e"
+            android:fontFamily="@font/bubblegum_sans"
             android:text="@string/delete"
             android:textColor="#fff"
             android:textSize="20sp" />
