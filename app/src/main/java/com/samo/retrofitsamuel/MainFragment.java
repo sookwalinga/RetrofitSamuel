@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -19,7 +20,7 @@ import com.google.android.material.textfield.TextInputLayout;
  */
 public class MainFragment extends Fragment {
     //Declaring classes and widgets.
-    Button btnGetAll, btnQuery, btnPost, btnPut, btnDelete;
+    Button btnGetAll, btnQuery, btnPost, btnPut;
     TextInputLayout textInputLayout;
 
     @Override
@@ -31,16 +32,13 @@ public class MainFragment extends Fragment {
         btnGetAll = view.findViewById(R.id.getAllPosts);
         btnQuery = view.findViewById(R.id.getByQuery);
         btnPost = view.findViewById(R.id.post);
-        btnPut = view.findViewById(R.id.put);
-        btnDelete = view.findViewById(R.id.delete);
-//        textInputLayout = view.findViewById(R.id.idEntry);
+        btnPut = view.findViewById(R.id.edit);
 
 //        Onclick listeners.
 //       Intent to the GET posts.
         btnGetAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getActivity(), GetPostsActivity.class);
                 startActivity(intent);
             }
@@ -50,7 +48,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), GetCommentsActivity.class);
+                Intent intent = new Intent(getActivity(), QueryActivity.class);
                 startActivity(intent);
             }
         });
@@ -59,7 +57,8 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
+                Intent intent = new Intent(getActivity(), GetPostsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -68,14 +67,6 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), UpdateActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), DeleteActivity.class);
                 startActivity(intent);
             }
         });

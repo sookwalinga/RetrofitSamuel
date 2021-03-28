@@ -23,9 +23,9 @@ public class DeleteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete);
+        setContentView(R.layout.activity_update);
 
-        textView = findViewById(R.id.textResult);
+        textView = findViewById(R.id.noDataView);
         apiClient = Retrofitinstance.getRetroClient().create(APIClient.class);
 
 //        AlertDialog.Builder builder = new AlertDialog.Builder(DeleteActivity.this);

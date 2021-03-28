@@ -7,14 +7,70 @@
     android:layout_gravity="center"
     tools:context=".UpdateActivity">
 
-    <TextView
-        android:id="@+id/textResult"
-        android:layout_margin="50dp"
-        android:gravity="center"
+    <LinearLayout
+        android:id="@+id/inputArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idQuery"
+            style="@style/TextLabel"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/search"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="#0E0E0E"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            app:navigationIcon="@drawable/ic_baseline_search_24"
+            android:id="@+id/sendEntry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            />
+
+    </LinearLayout>
+
+
+    <!--    This is populated once the data is successfully fetched.-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recview"
+        android:layout_below="@id/inputArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         />
+
+    <!--    To be made visible once the data fetch has not been successful. Initially hidded-->
+    <TextView
+        android:id="@+id/noDataView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SORRY, FAILED TO FETCH DATA"
+        android:textColor="#000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/textResult"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/inputArea"-->
+<!--        android:layout_margin="50dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="#000"-->
+<!--        android:textSize="15dp" />-->
 
 </RelativeLayout>

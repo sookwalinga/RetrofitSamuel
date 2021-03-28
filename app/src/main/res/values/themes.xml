@@ -13,7 +13,7 @@
     </style>
 
     <style name="TextLabel" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">?colorPrimary</item>
+        <item name="boxStrokeColor">#F5A581</item>
         <item name="boxStrokeWidth">2dp</item>
     </style>
 

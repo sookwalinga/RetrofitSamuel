@@ -1,9 +1,12 @@
 package com.samo.retrofitsamuel.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,21 +16,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.samo.retrofitsamuel.R;
 import com.samo.retrofitsamuel.model.PostModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //Implementing the Adapter.
-public class GetListAdapter extends RecyclerView.Adapter<GetListAdapter.MyViewHolder> {
+public class UpdateAdapter extends RecyclerView.Adapter<UpdateAdapter.MyViewHolder> {
 
     private Context context;
-    private List<PostModel> postList;
+    private ArrayList<PostModel> postList;
 
-    public GetListAdapter(Context context, List<PostModel> postList) {
+    public UpdateAdapter(Context context, ArrayList<PostModel> postList) {
         this.context = context;
         this.postList = postList;
     }
 
     //    Settind data explicitly when refreshing the recyclerview.
-    public void setPostList(List<PostModel> postList) {
+    public void setPostList(ArrayList<PostModel> postList) {
         this.postList = postList;
         notifyDataSetChanged();
     }
@@ -35,14 +39,14 @@ public class GetListAdapter extends RecyclerView.Adapter<GetListAdapter.MyViewHo
     // Inflating the recyclerview.    .
     @Nullable
     @Override
-    public GetListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UpdateAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.get_item, parent, false);
+        View view = inflater.inflate(R.layout.edit_item, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GetListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UpdateAdapter.MyViewHolder holder, int position) {
 //Setting values from the list.
         holder.tvId.setText(String.valueOf(this.postList.get(position).getId()));
         holder.tvUserId.setText(String.valueOf(this.postList.get(position).getUserId()));

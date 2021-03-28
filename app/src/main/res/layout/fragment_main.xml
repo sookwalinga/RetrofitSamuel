@@ -1,106 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainFragment">
 
-    <ImageView
-        android:id="@+id/retrofitImage"
-        android:layout_width= "wrap_content"
-        android:layout_height="197dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:src="@drawable/retrofit_logo" />
-<ScrollView
-    android:layout_below="@id/retrofitImage"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:id="@+id/idEntry"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="10dp"-->
-        <!--            android:layout_marginTop="40dp">-->
+        <ImageView
+            android:id="@+id/retrofitImage"
+            android:layout_width="wrap_content"
+            android:layout_height="197dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/retrofit_logo" />
 
-        <!--            <com.google.android.material.textfield.TextInputEditText-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:hint="@string/search"-->
-        <!--                android:inputType="number"-->
-        <!--                android:padding="10dp"-->
-        <!--                android:textColor="#000"-->
-        <!--                android:textSize="18sp" />-->
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-        <Button
-            android:id="@+id/getAllPosts"
-            android:layout_width="250dp"
+        <GridLayout
+            android:id="@+id/GridLayout1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#f1631e"
-            android:fontFamily="@font/bubblegum_sans"
-            android:text="@string/getAllPosts"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:rowCount="2"
+            tools:context=".GridXMLActivity">
 
-        <Button
-            android:id="@+id/getByQuery"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#f1631e"
-            android:fontFamily="@font/bubblegum_sans"
-            android:text="@string/getByQuery"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/getAllPosts"
+                android:layout_margin="2dp"
+                android:layout_gravity="left|top"
+                android:backgroundTint="@color/white"
+                android:drawableTop="@drawable/ic_baseline_cloud_download_24"
+                android:fontFamily="@font/bubblegum_sans"
+                android:text="@string/getAllPosts"
+                android:textColor="?colorPrimary"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/post"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#f1631e"
-            android:fontFamily="@font/bubblegum_sans"
-            android:text="@string/post"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/getByQuery"
+                android:layout_margin="2dp"
+                android:layout_gravity="left|top"
+                android:backgroundTint="@color/white"
+                android:drawableTop="@drawable/ic_baseline_filter_drama_24"
+                android:fontFamily="@font/bubblegum_sans"
+                android:text="@string/getByQuery"
+                android:textColor="?colorPrimary"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/put"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#f1631e"
-            android:fontFamily="@font/bubblegum_sans"
-            android:text="@string/put"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/post"
+                android:layout_margin="2dp"
+                android:layout_gravity="left|top"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/bubblegum_sans"
+                android:drawableTop="@drawable/ic_baseline_cloud_upload_24"
+                android:text="@string/post"
+                android:textColor="?colorPrimary"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/delete"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#f1631e"
-            android:fontFamily="@font/bubblegum_sans"
-            android:text="@string/delete"
-            android:textColor="#fff"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/edit"
+                android:layout_margin="2dp"
+                android:layout_gravity="left|top"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/bubblegum_sans"
+                android:drawableTop="@drawable/ic_baseline_cloud_done_24"
+                android:text="@string/edit"
+                android:textColor="?colorPrimary"
+                android:textSize="20sp" />
+        </GridLayout>
     </LinearLayout>
 </ScrollView>
-
-</RelativeLayout>

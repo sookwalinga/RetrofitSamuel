@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.samo.retrofitsamuel.model.CommentModel;
-import com.samo.retrofitsamuel.model.CommentModel;
+import com.samo.retrofitsamuel.model.PostModel;
 import com.samo.retrofitsamuel.network.APIClient;
 import com.samo.retrofitsamuel.network.Retrofitinstance;
 
@@ -16,29 +16,27 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 //Implementing the ViewModel
-public class QueryListViewModel extends ViewModel {
+public class CommentViewModel extends ViewModel {
 
-//    Observer to watch calling of data and updating the recyclerview.
-    private MutableLiveData<List<CommentModel>> commentList;
-//    Defining a constructor for this class.
-    public QueryListViewModel(){
+    //    Observer to watch calling of data and updating the recyclerview.
+    protected MutableLiveData<List<CommentModel>> commentList;
+
+    //    Defining a constructor for this class.
+    public CommentViewModel() {
 //        Initializing the Observer.
         commentList = new MutableLiveData<>();
 
     }
 
-//    Function to return the live data.
-    public MutableLiveData<List<CommentModel>> getCommentListObserver(){
-        return  commentList;
+    //    Function to return the live data.
+    public MutableLiveData<List<CommentModel>> getPostListObserver() {
+        return commentList;
     }
 
-//    Instatiating Retrofit in order to make the API Call.
-    public void makeApiCall(){
+    //   API Call to retrieve data.
+    public void makeApiCall(int commentsPostId) {
         APIClient apiClient = Retrofitinstance.getRetroClient().create(APIClient.class);
-        Call<List<CommentModel>> call = apiClient.getComments();
-
-//        For the id passed in dynamically.
-//        Call<List<CommentModel>> call = apiClient.getComments(1);
+        Call<List<CommentModel>> call = apiClient.getComments(commentsPostId);
 
         //        Executing the request in the background (asynchronously) using the enqueue retrofit method.
         call.enqueue(new Callback<List<CommentModel>>() {
@@ -56,4 +54,5 @@ public class QueryListViewModel extends ViewModel {
             }
         });
     }
+
 }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.samo.retrofitsamuel">
 
+
+<!--        Intent permission needed in order to fetch data from the internet.-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,6 +18,7 @@
         <activity android:name=".GetPostsActivity" />
         <activity android:name=".LearnMoreActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".QueryActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

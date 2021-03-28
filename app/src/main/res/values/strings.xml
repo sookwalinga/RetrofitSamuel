@@ -2,15 +2,23 @@
     <string name="app_name">Retrofit</string>
     <string name="search">Enter id</string>
     <string name="getAllPosts">GET ALL</string>
-    <string name="getByQuery">GET BY QUERY</string>
+    <string name="getByQuery">QUERY</string>
     <string name="post">POST</string>
-    <string name="put">PUT</string>
-    <string name="delete">DELETE</string>
+    <string name="edit">EDIT</string>
     <string name="home">Home</string>
     <string name="LearnMore">Learn More</string>
     <string name="developer">Developed By Sam O.</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="PostsByQuery">Posts By Query</string>
+    <string name="id">ID</string>
+    <string name="userId">User ID</string>
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+    <string name="onFailure">SORRY, FAILED TO FETCH DATA</string>
+    <string name="postId">Post Id</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="enterPostId">Enter Post Id</string>
 
 </resources>

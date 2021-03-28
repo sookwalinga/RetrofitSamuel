@@ -16,12 +16,12 @@ import com.samo.retrofitsamuel.model.CommentModel;
 import java.util.List;
 
 //Implementing the Adapter.
-public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.MyViewHolder> {
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHolder> {
 
     private Context context;
     private List<CommentModel> commentList;
 
-    public CommentListAdapter(Context context, List<CommentModel> commentList) {
+    public CommentAdapter(Context context, List<CommentModel> commentList) {
         this.context = context;
         this.commentList = commentList;
     }
@@ -35,20 +35,20 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
     // Inflating the recyclerview.    .
     @Nullable
     @Override
-    public CommentListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CommentAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.recycler_row_comments, parent, false);
+        View view = inflater.inflate(R.layout.query_item, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CommentListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CommentAdapter.MyViewHolder holder, int position) {
 //Setting values from the list.
-        holder.tvId.setText("Id: " + String.valueOf(this.commentList.get(position).getId()));
-        holder.tvPostId.setText("PostId: " +  String.valueOf(this.commentList.get(position).getPostId()));
-        holder.tvName.setText("Name: " + this.commentList.get(position).getName().toString());
-        holder.tvEmail.setText("Email: " + this.commentList.get(position).getEmail().toString());
-        holder.tvBody.setText("Body: " + this.commentList.get(position).getText().toString());
+        holder.tvId.setText(String.valueOf(this.commentList.get(position).getId()));
+        holder.tvPostId.setText(String.valueOf(this.commentList.get(position).getPostId()));
+        holder.tvName.setText(this.commentList.get(position).getName().toString());
+        holder.tvEmail.setText(this.commentList.get(position).getEmail().toString());
+        holder.tvBody.setText(this.commentList.get(position).getText().toString());
     }
 
     @Override
