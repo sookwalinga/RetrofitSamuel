@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class PostModel {
 
     private int userId;
-    private int id;
+    private Integer id;
     private String title;
     // Anotating variable name with a serialized name since the JSON key and variable name differ.
     @SerializedName("body")

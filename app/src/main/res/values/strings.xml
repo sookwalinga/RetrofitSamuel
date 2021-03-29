@@ -20,5 +20,9 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="enterPostId">Enter Post Id</string>
+    <string name="enterUserId">Enter UserId*</string>
+    <string name="enterBody">Enter Body Text</string>
+    <string name="enterTitle">Enter Title</string>
+    <string name="postResult">POST RESULTS</string>
 
 </resources>

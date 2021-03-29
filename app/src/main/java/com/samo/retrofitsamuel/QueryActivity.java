@@ -24,7 +24,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.samo.retrofitsamuel.adapter.CommentAdapter;
 import com.samo.retrofitsamuel.model.CommentModel;
 import com.samo.retrofitsamuel.viewmodel.CommentViewModel;
-import com.samo.retrofitsamuel.viewmodel.QueryViewModel;
 
 import java.util.List;
 
@@ -78,14 +77,22 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         queryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer idEntered = Integer.valueOf(tilQueryId.getEditText().getText().toString());
-                GetComments(idEntered);
+                String strIdEntered = tilQueryId.getEditText().getText().toString();
+                if (strIdEntered.length() != 0) {
+                    Integer idEntered = Integer.valueOf(strIdEntered);
+                    GetComments(idEntered);
+
+                    //Clearing input after querry.
+                    tilQueryId.getEditText().setText("");
+                } else {
+                    Toast.makeText(QueryActivity.this, "Please enter Id (1 - 100).", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
     }
 
-    private void GetComments(int idEntered){
+    private void GetComments(int idEntered) {
 
         commentViewModel = ViewModelProviders.of(this).get(CommentViewModel.class);
 

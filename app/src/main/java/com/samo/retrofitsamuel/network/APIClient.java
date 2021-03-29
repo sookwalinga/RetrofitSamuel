@@ -27,16 +27,20 @@ public interface APIClient {
 //    Call to encapsulate the request and response made with the GET method.
     Call<List<PostModel>> getPostList();
 
-    @GET("posts/{id}")
-    Call<List<PostModel>> getItem(@Path("id") int postId);
+//    @GET("posts/{id}")
+//    Call<List<PostModel>> getItem(@Path("id") int postId);
 //
-//    //GET request for the comments
+    @GET("posts/1")
+    Call<List<PostModel>> getItem();
+
+
+    //    //GET request for the comments
 //    @GET("posts/1/comments")
 //    Call<List<CommentModel>> getComments();
 //
 //    Passing in ID dynamically.
-@GET("posts/{id}/comments")
-Call<List<CommentModel>> getComments(@Path("id") int postId);
+    @GET("posts/{id}/comments")
+    Call<List<CommentModel>> getComments(@Path("id") int postId);
 
     //    GET request with querry parameter.
 //    @GET("posts")

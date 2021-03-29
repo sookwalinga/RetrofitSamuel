@@ -57,7 +57,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), GetPostsActivity.class);
+                Intent intent = new Intent(getActivity(), PostsActivity.class);
                 startActivity(intent);
             }
         });

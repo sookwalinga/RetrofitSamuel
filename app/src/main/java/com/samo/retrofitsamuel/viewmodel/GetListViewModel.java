@@ -15,12 +15,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 //Implementing the ViewModel
-public class QueryViewModel extends ViewModel {
+public class GetListViewModel extends ViewModel {
 
 //    Observer to watch calling of data and updating the recyclerview.
     protected MutableLiveData<List<PostModel>> postList;
 //    Defining a constructor for this class.
-    public QueryViewModel(){
+    public GetListViewModel(){
 //        Initializing the Observer.
         postList = new MutableLiveData<>();
 
@@ -34,7 +34,7 @@ public class QueryViewModel extends ViewModel {
 //   API Call to retrieve data.
     public void makeApiCall(){
         APIClient apiClient = Retrofitinstance.getRetroClient().create(APIClient.class);
-        Call<List<PostModel>> call = apiClient.getItem(5);
+        Call<List<PostModel>> call = apiClient.getPostList();
 
         //        Executing the request in the background (asynchronously) using the enqueue retrofit method.
         call.enqueue(new Callback<List<PostModel>>() {

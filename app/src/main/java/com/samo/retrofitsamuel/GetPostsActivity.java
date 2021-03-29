@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.samo.retrofitsamuel.adapter.GetListAdapter;
 import com.samo.retrofitsamuel.model.PostModel;
-import com.samo.retrofitsamuel.viewmodel.PostListViewModel;
+import com.samo.retrofitsamuel.viewmodel.GetListViewModel;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class GetPostsActivity extends AppCompatActivity implements NavigationVie
     //Declaring classes and widgets.
     private List<PostModel> postModelList;
     private GetListAdapter adapter;
-    private PostListViewModel viewModel;
+    private GetListViewModel viewModel;
 
     public RecyclerView recyclerView;
     public TextView textView;
@@ -45,7 +45,7 @@ public class GetPostsActivity extends AppCompatActivity implements NavigationVie
         //        Finding reference to the toolbar.
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Retrofit");
+        getSupportActionBar().setTitle("List of Posts");
 
         drawer_layout = findViewById(R.id.drawerLayout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -67,7 +67,7 @@ public class GetPostsActivity extends AppCompatActivity implements NavigationVie
         adapter = new GetListAdapter(this, postModelList);
         recyclerView.setAdapter(adapter);
 
-        viewModel = ViewModelProviders.of(this).get(PostListViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(GetListViewModel.class);
 //        listening to the live data.
         viewModel.getPostListObserver().observe(this, new Observer<List<PostModel>>() {
             //            Onsuccess, display the data.

@@ -1,21 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    tools:context=".UpdateActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".QueryActivity"
+    tools:openDrawer="start">
 
     <LinearLayout
-        android:id="@+id/inputArea"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ToolbarTheme"
+            app:popupTheme="@style/ToolbarTheme" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idPost"
+                style="@style/TextLabel"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/search"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textColor="#0E0E0E"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/queryPostId"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                app:navigationIcon="@drawable/ic_baseline_search_24" />-->
+
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/idQuery"
+            android:id="@+id/userIdPost"
+            android:layout_below="@id/idPost"
             style="@style/TextLabel"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -31,46 +69,43 @@
                 android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.Toolbar
-            app:navigationIcon="@drawable/ic_baseline_search_24"
-            android:id="@+id/sendEntry"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="15dp"
-            />
+            android:layout_below="@id/inputArea"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <!--    This is populated once the data is successfully fetched.-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--    Appears once the data fetch has not been successful. Initially hidded-->
+            <TextView
+                android:id="@+id/noDataView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/onFailure"
+                android:textColor="#000"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#f1631e"
+        app:headerLayout="@layout/nav_header"
+        app:itemTextColor="#fff"
+        app:menu="@menu/drawer_menu" />
 
-    <!--    This is populated once the data is successfully fetched.-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recview"
-        android:layout_below="@id/inputArea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        />
-
-    <!--    To be made visible once the data fetch has not been successful. Initially hidded-->
-    <TextView
-        android:id="@+id/noDataView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SORRY, FAILED TO FETCH DATA"
-        android:textColor="#000"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:visibility="gone"/>
-
-<!--    <TextView-->
-<!--        android:id="@+id/textResult"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/inputArea"-->
-<!--        android:layout_margin="50dp"-->
-<!--        android:gravity="center"-->
-<!--        android:textColor="#000"-->
-<!--        android:textSize="15dp" />-->
-
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
