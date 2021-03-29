@@ -13,8 +13,6 @@
         android:roundIcon="@drawable/retrofit"
         android:supportsRtl="true"
         android:theme="@style/Theme.RetrofitSamuel.NoActionBar">
-        <activity android:name=".UpdateActivity"/>
-        <activity android:name=".DeleteActivity"/>
         <activity android:name=".GetPostsActivity" />
         <activity android:name=".PostsActivity"/>
         <activity android:name=".LearnMoreActivity" />

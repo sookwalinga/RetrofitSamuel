@@ -31,7 +31,7 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:lineSpacingExtra="8sp"
-            android:text="@string/postResult"
+            android:text="@string/result"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#000"

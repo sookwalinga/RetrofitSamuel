@@ -23,6 +23,26 @@
     <string name="enterUserId">Enter UserId*</string>
     <string name="enterBody">Enter Body Text</string>
     <string name="enterTitle">Enter Title</string>
-    <string name="postResult">POST RESULTS</string>
+    <string name="result">RESULTS</string>
+    <string name="updateUserId">Update UserId</string>
+    <string name="updateTitle">Update Title</string>
+    <string name="updateText">Update Text</string>
+    <string name="pickId">Select Id: </string>
+
+    <!--    Array list for the spinner values.-->
+    <string-array name="id_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

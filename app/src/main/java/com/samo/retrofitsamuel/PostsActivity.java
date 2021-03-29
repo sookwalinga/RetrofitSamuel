@@ -43,6 +43,8 @@ public class PostsActivity extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
+        //        Initializing variables.
+        btnPost = findViewById(R.id.post_btn);
         tilUserId = findViewById(R.id.userIdPost);
         tilTitle = findViewById(R.id.titlePost);
         tilBody = findViewById(R.id.bodyPost);
@@ -61,8 +63,6 @@ public class PostsActivity extends AppCompatActivity implements NavigationView.O
         drawer_layout.addDrawerListener(toggle);
         toggle.syncState();
 
-        //        Initializing variables.
-        btnPost = findViewById(R.id.post_btn);
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override

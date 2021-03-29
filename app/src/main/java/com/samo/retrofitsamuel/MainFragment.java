@@ -3,15 +3,14 @@ package com.samo.retrofitsamuel;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -56,7 +55,6 @@ public class MainFragment extends Fragment {
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getActivity(), PostsActivity.class);
                 startActivity(intent);
             }
@@ -66,8 +64,15 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), UpdateActivity.class);
-                startActivity(intent);
+                Fragment fragment = new UpdateFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+//                Intent intent = new Intent(getActivity(), UpdateActivity.class);
+//                startActivity(intent);
             }
         });
 
