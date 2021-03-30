@@ -129,8 +129,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.fragment_main:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MainFragment()).addToBackStack(MainFragment.class.getSimpleName()).commit();
+                super.onBackPressed();
                 break;
             case R.id.activity_learn_more:
                 Intent intent = new Intent(QueryActivity.this, LearnMoreActivity.class);

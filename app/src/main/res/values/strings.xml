@@ -26,7 +26,7 @@
     <string name="result">RESULTS</string>
     <string name="updateUserId">Update UserId</string>
     <string name="updateTitle">Update Title</string>
-    <string name="updateText">Update Text</string>
+    <string name="updateText">Update Body</string>
     <string name="pickId">Select Id: </string>
 
     <!--    Array list for the spinner values.-->
