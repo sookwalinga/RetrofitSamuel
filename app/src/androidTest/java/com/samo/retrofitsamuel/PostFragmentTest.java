@@ -28,21 +28,21 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class UpdateActivityTest {
+public class PostFragmentTest {
 
     @Rule
     public ActivityTestRule<SplashActivity> mActivityTestRule = new ActivityTestRule<>(SplashActivity.class);
 
     @Test
-    public void updateActivityTest() {
+    public void postFragmentTest() {
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.edit), withText("EDIT"),
+                allOf(withId(R.id.post), withText("POST"),
                         childAtPosition(
                                 allOf(withId(R.id.GridLayout1),
                                         childAtPosition(
                                                 withClassName(is("android.widget.LinearLayout")),
                                                 1)),
-                                3)));
+                                2)));
     }
 
     private static Matcher<View> childAtPosition(
