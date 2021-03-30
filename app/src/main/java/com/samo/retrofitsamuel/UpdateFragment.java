@@ -95,7 +95,7 @@ public class UpdateFragment extends Fragment implements AdapterView.OnItemSelect
                     tilBody.getEditText().setText("");
                 } else {
                     Toast.makeText(getContext(),
-                            "Please update the records. The UserId is required.", Toast.LENGTH_LONG).show();
+                            "Please enter updates. The UserId is required.", Toast.LENGTH_LONG).show();
                 }
             }
         });
