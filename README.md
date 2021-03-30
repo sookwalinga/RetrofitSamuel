@@ -8,6 +8,7 @@ STEPS TO FOLLOW (RETROFIT WORKFLOW)
 -	GSON and GSON –Converter: By default, Retrofit can only deserialize HTTP bodies into OkHttp's ResponseBody type and it can only accept its RequestBody type for @Body. GSON is Java library which can be used to convert Java Objects into their JSON Representation.
 -	Recyclerview
 -	Lifecycle
+- Material theme
 
 OTHER NOTES
 - The project is based on the MVVM architecture.
