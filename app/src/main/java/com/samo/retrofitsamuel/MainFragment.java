@@ -55,8 +55,14 @@ public class MainFragment extends Fragment {
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PostsActivity.class);
-                startActivity(intent);
+
+                Fragment fragment = new PostFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
             }
         });
 
@@ -71,8 +77,6 @@ public class MainFragment extends Fragment {
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 
-//                Intent intent = new Intent(getActivity(), UpdateActivity.class);
-//                startActivity(intent);
             }
         });
 

@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RetrofitSamuel.NoActionBar">
         <activity android:name=".GetPostsActivity" />
-        <activity android:name=".PostsActivity"/>
         <activity android:name=".LearnMoreActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".QueryActivity"/>

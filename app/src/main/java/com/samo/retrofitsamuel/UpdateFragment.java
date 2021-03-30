@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +36,9 @@ public class UpdateFragment extends Fragment implements AdapterView.OnItemSelect
     private DrawerLayout drawer_layout;
     FloatingActionButton btnUpdate, btnDelete;
     TextInputLayout tilUserId, tilTitle, tilBody;
+    ImageView imageView;
     Spinner spinner;
+    public String selectedItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,27 +52,32 @@ public class UpdateFragment extends Fragment implements AdapterView.OnItemSelect
         tilUserId = view.findViewById(R.id.userIdPost);
         tilTitle = view.findViewById(R.id.titlePost);
         tilBody = view.findViewById(R.id.bodyPost);
-        spinner = view.findViewById(R.id.idList);
+        imageView = view.findViewById(R.id.retrofitImage);
+        spinner = (Spinner) view.findViewById(R.id.idList);
+        spinner.setOnItemSelectedListener(this);
 
-        //        Finding reference to the toolbar.
-//        Toolbar toolbar = findViewById(R.id.my_toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("Update/ Delete");
+//        Return to the main fragment on image click.
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-//        drawer_layout = findViewById(R.id.drawerLayout);
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(getActivity());
-//        navigationView.setItemIconTintList(null);
+                Fragment fragment = new MainFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(getActivity(), drawer_layout, toolbar,
-//                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer_layout.addDrawerListener(toggle);
-//        toggle.syncState();
+            }
+        });
 
-//        Spinner item selection
-        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getContext(), R.array.id_values, android.R.layout.simple_spinner_item);
+        // Creating an ArrayAdapter using the string array and a default spinner layout.
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.id_values, android.R.layout.simple_spinner_item);
+        // Specifying the layout to use when the list of choices appears.
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Applying the adapter to the spinner.
         spinner.setAdapter(arrayAdapter);
+
 
         //Update
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +95,7 @@ public class UpdateFragment extends Fragment implements AdapterView.OnItemSelect
                     tilBody.getEditText().setText("");
                 } else {
                     Toast.makeText(getContext(),
-                            "Please fill in the data to be posted. The UserId is required.", Toast.LENGTH_LONG).show();
+                            "Please update the records. The UserId is required.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -101,37 +110,15 @@ public class UpdateFragment extends Fragment implements AdapterView.OnItemSelect
         return view;
     }
 
-    //    Delete alertdialog.
-    private void DeleteAlertDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Delete?");
-        builder.setMessage("Are you sure you want to delete this item?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                APIClient apiClient = Retrofitinstance.getRetroClient().create(APIClient.class);
+    //Selecting spinner items.
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        selectedItem = adapterView.getItemAtPosition(i).toString();
+    }
 
-                Call<Void> call = apiClient.deletePost(5);
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        Toast.makeText(getContext(), "Deleted successfully! Response code: " + response.code(), Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        builder.create().show();
     }
 
     private void GetUpdateResult(int userIdEntered, String titleEntered, String bodyEntered) {
@@ -151,7 +138,8 @@ public class UpdateFragment extends Fragment implements AdapterView.OnItemSelect
         APIClient apiClient = Retrofitinstance.getRetroClient().create(APIClient.class);
 
         PostModel postModel = new PostModel(userIdEntered, titleEntered, bodyEntered);
-        Call<PostModel> call = apiClient.patchPost(1, postModel);
+        Integer selectedId = Integer.parseInt(selectedItem);
+        Call<PostModel> call = apiClient.patchPost(selectedId, postModel);
 
         //        Executing the request in the background (asynchronously) using the enqueue retrofit method.
         call.enqueue(new Callback<PostModel>() {
@@ -189,13 +177,37 @@ public class UpdateFragment extends Fragment implements AdapterView.OnItemSelect
         });
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    //    Delete alertdialog.
+    private void DeleteAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Delete item " + selectedItem + "?");
+        builder.setMessage("Are you sure you want to delete item with id " + selectedItem + "?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                APIClient apiClient = Retrofitinstance.getRetroClient().create(APIClient.class);
 
-    }
+                Call<Void> call = apiClient.deletePost(5);
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Toast.makeText(getContext(), "Successfully deleted item " + selectedItem + "\n" + " Response code: " + response.code(), Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        builder.create().show();
 
     }
 }

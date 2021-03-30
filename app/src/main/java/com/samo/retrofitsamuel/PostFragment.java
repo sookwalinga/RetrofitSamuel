@@ -1,25 +1,24 @@
 package com.samo.retrofitsamuel;
 
-import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.samo.retrofitsamuel.model.PostModel;
@@ -30,39 +29,41 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PostsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class PostFragment extends Fragment {
     //Declaring classes and widgets.
     private PostModel postModelList;
-
-    private DrawerLayout drawer_layout;
-    Button btnPost;
+    FloatingActionButton btnPost;
     TextInputLayout tilUserId, tilTitle, tilBody;
+    ImageView imageView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_post, container, false);
 
         //        Initializing variables.
-        btnPost = findViewById(R.id.post_btn);
-        tilUserId = findViewById(R.id.userIdPost);
-        tilTitle = findViewById(R.id.titlePost);
-        tilBody = findViewById(R.id.bodyPost);
-        //        Finding reference to the toolbar.
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Post");
+        btnPost = view.findViewById(R.id.post_btn);
+        tilUserId = view.findViewById(R.id.userIdPost);
+        tilTitle = view.findViewById(R.id.titlePost);
+        tilBody = view.findViewById(R.id.bodyPost);
+        imageView = view.findViewById(R.id.retrofitImage);
 
-        drawer_layout = findViewById(R.id.drawerLayout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setItemIconTintList(null);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer_layout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer_layout.addDrawerListener(toggle);
-        toggle.syncState();
+        //        Return to the main fragment on image click.
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Fragment fragment = new MainFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+            }
+        });
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,17 +79,18 @@ public class PostsActivity extends AppCompatActivity implements NavigationView.O
                     tilTitle.getEditText().setText("");
                     tilBody.getEditText().setText("");
                 } else {
-                    Toast.makeText(PostsActivity.this,
+                    Toast.makeText(getContext(),
                             "Please fill in the data to be posted. The UserId is required.", Toast.LENGTH_LONG).show();
                 }
             }
         });
+        return view;
     }
 
     private void GetPostResult(int userIdEntered, String titleEntered, String bodyEntered) {
 //Alert Dialog to show popup of results.
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(getActivity().LAYOUT_INFLATER_SERVICE);
         final View dialogView = inflater.inflate(R.layout.popup, null);
         dialogBuilder.setView(dialogView);
 
@@ -140,30 +142,4 @@ public class PostsActivity extends AppCompatActivity implements NavigationView.O
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.fragment_main:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MainFragment()).addToBackStack(MainFragment.class.getSimpleName()).commit();
-                break;
-            case R.id.activity_learn_more:
-                Intent intent = new Intent(PostsActivity.this, LearnMoreActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                Toast.makeText(PostsActivity.this, "Sorry, nothing Selected.", Toast.LENGTH_SHORT).show();
-        }
-        drawer_layout.closeDrawer(GravityCompat.START);
-        return false;
-    }
 }
